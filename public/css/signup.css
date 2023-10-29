@@ -1,0 +1,10 @@
+input:not(.search-box, .checkout-box, .size-checkbox, input[type="file"])
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    display: none;
+}
