@@ -7,7 +7,7 @@ const path = require('path');
 
 // require('dotenv').config();
 
-let serviceAccount = require("./public/credentials/******************************************.json");
+let serviceAccount = require("./public/credentials/laysanecommerceapp-firebase-adminsdk-89w6t-4d7f7c1e30.json");
 
 // const {initializeApp} = require("firebase/app");
 // const {firebaseConfig} = require("./config/firebaseConfig");
