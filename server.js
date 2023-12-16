@@ -79,9 +79,6 @@ app.post("/signup", (req, res) => {
 app.get("/product", (req, res) => {
     res.sendFile(path.join(staticPath, "product.html"));
 })
-app.get("/search", (req, res) => {
-    res.sendFile(path.join(staticPath, "search.html"));
-})
 app.get("/cart", (req, res) => {
     res.sendFile(path.join(staticPath, "cart.html"));
 })
@@ -90,18 +87,6 @@ app.get("/checkout", (req, res) => {
 })
 app.get("/mail", (req, res) => {
     res.sendFile(path.join(staticPath, "mail.html"));
-})
-app.get("/men", (req, res) => {
-    res.sendFile(path.join(staticPath, "men.html"));
-})
-app.get("/women", (req, res) => {
-    res.sendFile(path.join(staticPath, "women.html"));
-})
-app.get("/shoes", (req, res) => {
-    res.sendFile(path.join(staticPath, "shoes.html"));
-})
-app.get("/accessories", (req, res) => {
-    res.sendFile(path.join(staticPath, "accessories.html"));
 })
 app.get("/add-product", (req, res) => {
     res.sendFile(path.join(staticPath, "addProduct.html"));
@@ -157,7 +142,24 @@ app.post("/add-product", (req, res) => {
     //         return res.json({'alert': 'Some error occurred.Try again.'});
     //     })
 
-
+})
+// app.get("/search", (req, res) => {
+//     res.sendFile(path.join(staticPath, "search.html"));
+// })
+app.get('/search/:key', (req, res) => {
+    res.sendFile(path.join(staticPath, 'search.html'));
+})
+app.get("/men", (req, res) => {
+    res.sendFile(path.join(staticPath, "men.html"));
+})
+app.get("/women", (req, res) => {
+    res.sendFile(path.join(staticPath, "women.html"));
+})
+app.get("/shoes", (req, res) => {
+    res.sendFile(path.join(staticPath, "shoes.html"));
+})
+app.get("/accessories", (req, res) => {
+    res.sendFile(path.join(staticPath, "accessories.html"));
 })
 app.get("/404", (req, res) => {
     res.sendFile(path.join(staticPath, "404.html"));

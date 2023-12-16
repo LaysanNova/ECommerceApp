@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/laysanECommerceApp.iml" filepath="$PROJECT_DIR$/.idea/laysanECommerceApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/laysan_ECommerceApp.iml" filepath="$PROJECT_DIR$/.idea/laysan_ECommerceApp.iml" />
     </modules>
   </component>
 </project>

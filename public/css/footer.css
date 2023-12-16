@@ -14,7 +14,6 @@ footer{
 
 .footer-content .logo{
     height: 160px;
-
 }
 
 .footer-ul-container{
@@ -38,6 +37,8 @@ footer{
     font-size: 20px;
     margin-bottom: 20px;
 }
+
+
 
 .category .footer-link{
     text-decoration: none;

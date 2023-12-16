@@ -39,7 +39,7 @@
     margin-bottom: 20px;
 }
 
-.cart .sm-product:last-child, .wishlist .cart .sm-product:last-child{
+.cart .sm-product:last-child, .wishlist .sm-product:last-child{
     margin-bottom: 0;
 }
 
@@ -60,7 +60,7 @@
     text-transform: capitalize;
 }
 
-.detail-des{
+.sm-des{
     font-size: 18px;
     opacity: 0.5;
     line-height: 25px;
@@ -157,5 +157,5 @@
 .bill{
     font-size: 60px;
     font-weight: 500;
-    margin: 10px  0;
+    margin: 10px 0;
 }

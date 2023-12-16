@@ -7,15 +7,64 @@
     <title>RAIN SUN | Timeless Clothing For Him and For Her | Made by LM</title>
     <link rel="stylesheet" href="css/home.css">
 
-
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="img/favicon_io/site.webmanifest">
 
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 </head>
 <body>
     <nav class="navbar"></nav>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBwTJ6FBvOVX4K-X9JRV--XZ4Hf7CB5sTQ",
+            authDomain: "appl-655b1.firebaseapp.com",
+            databaseURL: "https://appl-655b1-default-rtdb.firebaseio.com",
+            projectId: "appl-655b1",
+            storageBucket: "appl-655b1.appspot.com",
+            messagingSenderId: "913353026515",
+            appId: "1:913353026515:web:efff79e2e152619c499d26"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        const products = db.ref("products");
+        const tags = products.child("tags");
+
+        // let searchResult = [];
+
+        products.once("value", function (snapshot) {
+            if (!snapshot.exists()) {
+                console.log("No product found")
+
+            } else {
+                console.log(snapshot.val());
+
+                snapshot.forEach(function (element) {
+                    console.log(element.val());
+
+                    let data = element.val();
+
+                    //data.id = element.key().toString().replace("-", "");
+                    // console.log(data);
+
+                    const tags = data.tags.toString();
+
+                    console.log(tags);
+                    getSearchResult(keyWords, data)
+
+                    // if (tags.toLowerCase().includes("dress".trim().toLowerCase())) {
+                    //     console.log("************** found *****************");
+                    //     searchResult.push(data);
+                    // }
+                })
+            }
+        });
+
+        console.log(searchResult); ///******* DOES NOT WORK ******************
+
+    </script>
 
     <!-- Hero section-->
     <header class="hero-section">

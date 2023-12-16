@@ -63,7 +63,12 @@
     position: relative;
     width: 100%;
     height: 350px;
-    overflow: hidden ;
+    overflow: hidden;
+
+    /*-webkit-transform: scale(1);*/
+    /*transform: scale(1);*/
+    /*-webkit-transition: .3s ease-in-out;*/
+    /*transition: .3s ease-in-out;*/
 }
 
 .product-thumb{
@@ -234,4 +239,18 @@
 .collection:nth-child(3){
     grid-column: span 2;
     margin-bottom: 10px;
+}
+
+.content-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    font-family: 'Krub', sans-serif;
+}
+
+.background-image {
+    background-image: url('../img/404_bg.jpg');
+    background-size: cover;
 }

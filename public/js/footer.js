@@ -1,33 +1,32 @@
 const createFooter = () => {
     let footer = document.querySelector('footer');
     footer.innerHTML = `
-            <div class="footer-content" id="footer-about">
+        <div class="footer-content" id="footer-about">
             <img src="../img/light-logo.png" class="logo" alt="">
-            <div class="footer-ul-container">
+            <div class="footer-ul-container">                
                 <ul class="category">
-                    <li class="category-title">men</li>
-                    <li><a href="#" class="footer-link">t-shirts</a></li>
-                    <li><a href="#" class="footer-link">sweatshirts</a></li>
-                    <li><a href="#" class="footer-link">shirts</a></li>
-                    <li><a href="#" class="footer-link">jeans</a></li>
-                    <li><a href="#" class="footer-link">trousers</a></li>
-                    <li><a href="#" class="footer-link">shoes</a></li>
-                    <li><a href="#" class="footer-link">casuals</a></li>
-                    <li><a href="#" class="footer-link">formals</a></li>
-                    <li><a href="#" class="footer-link">watch</a></li>
-
+                    <p class="category-title">men</p>
+                    <li><a href="/men" class="footer-link">t-shirts</a></li>
+                    <li><a href="/men" class="footer-link">sweatshirts</a></li>
+                    <li><a href="/men" class="footer-link">shirts</a></li>
+                    <li><a href="/men" class="footer-link">jeans</a></li>
+                    <li><a href="/men" class="footer-link">trousers</a></li>
+                    <li><a href="/shoes" class="footer-link">shoes</a></li>
+                    <li><a href="/men" class="footer-link">casuals</a></li>
+                    <li><a href="/men" class="footer-link">formals</a></li>
+                    <li><a href="/accessories" class="footer-link">watch</a></li>
                 </ul>
                 <ul class="category">
-                    <li class="category-title">women</li>
-                    <li><a href="#" class="footer-link">t-shirts</a></li>
-                    <li><a href="#" class="footer-link">sweatshirts</a></li>
-                    <li><a href="#" class="footer-link">shirts</a></li>
-                    <li><a href="#" class="footer-link">jeans</a></li>
-                    <li><a href="#" class="footer-link">trousers</a></li>
-                    <li><a href="#" class="footer-link">shoes</a></li>
-                    <li><a href="#" class="footer-link">casuals</a></li>
-                    <li><a href="#" class="footer-link">formals</a></li>
-                    <li><a href="#" class="footer-link">watch</a></li>
+                    <p class="category-title">women</p>
+                    <li><a href="/women" class="footer-link">t-shirts</a></li>
+                    <li><a href="/women" class="footer-link">sweatshirts</a></li>
+                    <li><a href="/women" class="footer-link">shirts</a></li>
+                    <li><a href="/women" class="footer-link">jeans</a></li>
+                    <li><a href="/women" class="footer-link">trousers</a></li>
+                    <li><a href="/shoes" class="footer-link">shoes</a></li>
+                    <li><a href="/women" class="footer-link">casuals</a></li>
+                    <li><a href="/women" class="footer-link">formals</a></li>
+                    <li><a href="/accessories" class="footer-link">watch</a></li>
 
                 </ul>
             </div>
