@@ -85,7 +85,6 @@ const createProductCard = (result) => {
              <div class="product-info">
                  <p class="product-name">${result.name}</p>
                  <p class="product-name">${result.id}</p>
-
                  <span class="actual-price">$${result.actualPrice}</span>
                  <span class="price">$${result.sellPrice}</span>
              </div>
