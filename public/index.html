@@ -14,57 +14,57 @@
 
     <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 </head>
-<body>
+<body onload="loadData()">
     <nav class="navbar"></nav>
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyBwTJ6FBvOVX4K-X9JRV--XZ4Hf7CB5sTQ",
-            authDomain: "appl-655b1.firebaseapp.com",
-            databaseURL: "https://appl-655b1-default-rtdb.firebaseio.com",
-            projectId: "appl-655b1",
-            storageBucket: "appl-655b1.appspot.com",
-            messagingSenderId: "913353026515",
-            appId: "1:913353026515:web:efff79e2e152619c499d26"
-        };
+<!--    <script>-->
+<!--        const firebaseConfig = {-->
+<!--            apiKey: "AIzaSyBwTJ6FBvOVX4K-X9JRV&#45;&#45;XZ4Hf7CB5sTQ",-->
+<!--            authDomain: "appl-655b1.firebaseapp.com",-->
+<!--            databaseURL: "https://appl-655b1-default-rtdb.firebaseio.com",-->
+<!--            projectId: "appl-655b1",-->
+<!--            storageBucket: "appl-655b1.appspot.com",-->
+<!--            messagingSenderId: "913353026515",-->
+<!--            appId: "1:913353026515:web:efff79e2e152619c499d26"-->
+<!--        };-->
 
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.database();
-        const products = db.ref("products");
-        const tags = products.child("tags");
+<!--        firebase.initializeApp(firebaseConfig);-->
+<!--        const db = firebase.database();-->
+<!--        const products = db.ref("products");-->
+<!--        const tags = products.child("tags");-->
 
-        // let searchResult = [];
+<!--        // let searchResult = [];-->
 
-        products.once("value", function (snapshot) {
-            if (!snapshot.exists()) {
-                console.log("No product found")
+<!--        products.once("value", function (snapshot) {-->
+<!--            if (!snapshot.exists()) {-->
+<!--                console.log("No product found")-->
 
-            } else {
-                console.log(snapshot.val());
+<!--            } else {-->
+<!--                console.log(snapshot.val());-->
 
-                snapshot.forEach(function (element) {
-                    console.log(element.val());
+<!--                snapshot.forEach(function (element) {-->
+<!--                    console.log(element.val());-->
 
-                    let data = element.val();
+<!--                    let data = element.val();-->
 
-                    //data.id = element.key().toString().replace("-", "");
-                    // console.log(data);
+<!--                    //data.id = element.key().toString().replace("-", "");-->
+<!--                    // console.log(data);-->
 
-                    const tags = data.tags.toString();
+<!--                    const tags = data.tags.toString();-->
 
-                    console.log(tags);
-                    getSearchResult(keyWords, data)
+<!--                    console.log(tags);-->
+<!--                    getSearchResult(keyWords, data)-->
 
-                    // if (tags.toLowerCase().includes("dress".trim().toLowerCase())) {
-                    //     console.log("************** found *****************");
-                    //     searchResult.push(data);
-                    // }
-                })
-            }
-        });
+<!--                    // if (tags.toLowerCase().includes("dress".trim().toLowerCase())) {-->
+<!--                    //     console.log("************** found *****************");-->
+<!--                    //     searchResult.push(data);-->
+<!--                    // }-->
+<!--                })-->
+<!--            }-->
+<!--        });-->
 
-        console.log(searchResult); ///******* DOES NOT WORK ******************
+<!--        console.log(searchResult); ///******* DOES NOT WORK ******************-->
 
-    </script>
+<!--    </script>-->
 
     <!-- Hero section-->
     <header class="hero-section">
@@ -301,8 +301,9 @@
     <footer></footer>
 
     <script src="js/nav.js"></script>
-    <script src="js/footer.js"></script>
+    <script src="js/realDBConnect.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/footer.js"></script>
 </body>a href="#" class="footer-link">
 </html>
 

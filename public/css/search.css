@@ -15,14 +15,14 @@
     font-weight: 700;
 }
 
-.product-container{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    height: auto;
-    grid-row-gap: 40px;
-}
+/*.product-container{*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(4, 1fr);*/
+/*    height: auto;*/
+/*    grid-row-gap: 40px;*/
+/*}*/
 
-.product-search-container {
+.product-container {
     width: 90%;
     margin-left: 10px;
     /*background-color: #4C4F3C;*/
