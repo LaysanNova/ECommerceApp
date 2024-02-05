@@ -1,5 +1,10 @@
+body {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 .search-results{
-    width: 100%;
+    width:100%;
     padding: 60px 0;
 }
 
@@ -15,24 +20,16 @@
     font-weight: 700;
 }
 
-/*.product-container{*/
-/*    display: grid;*/
-/*    grid-template-columns: repeat(4, 1fr);*/
-/*    height: auto;*/
-/*    grid-row-gap: 40px;*/
-/*}*/
-
-.product-container {
+.product-search-container {
     width: 90%;
     margin-left: 10px;
     /*background-color: #4C4F3C;*/
-    overflow: auto;
+    overflow: hidden;
     white-space: nowrap;
     padding: 0 10vw;
     scroll-behavior: smooth;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     height: auto;
     grid-row-gap: 40px;
 }
-

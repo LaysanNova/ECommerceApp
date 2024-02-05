@@ -73,6 +73,16 @@ input:hover, textarea:hover, .product-image:hover, .upload-image-section:hover, 
     grid-row: span 2;
 }
 
+.product-image > p {
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    font-size: 25px;
+    color: #FFFFBC;
+    text-transform: lowercase;
+    text-shadow: 3px 3px #142A00;
+}
+
 .upload-image-section-title {
     display: flex;
     justify-content: left;
@@ -94,6 +104,32 @@ input:hover, textarea:hover, .product-image:hover, .upload-image-section:hover, 
 .text img {
     height: 30px;
     margin: 0 15px 0 0;
+}
+
+.upload-progress {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 20px;
+}
+
+progress {
+    display: inline-block;
+    width: 90%;
+    background-color: #d8dcd3;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #d8dcd3;
+    border-radius: 5px;
+}
+progress::-webkit-progress-value {
+    background-color: #8C9A7F;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px 3px #4C4F3C;
+}
+progress::-moz-progress-bar {
+    /* style rules */
 }
 
 .upload-catalogue {
@@ -209,49 +245,9 @@ input::-webkit-inner-spin-button {
 #add-btn:hover {
     font-weight: 600;
     cursor: pointer;
-    /*background: url("../img/bkg-gold.png");*/
-    background: #666666;
+    background: url("../img/addProduct/bkg-gold.png");
 }
 
 #save-btn {
     background-color: #a9a9a9;
-}
-
-
-/* alert */
-.alert-box {
-    width: 300px;
-    min-height: 150px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 5px 100px rgba(0, 0, 0, 0.05);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    opacity: 0;
-    pointer-events: none;
-    transition: 1s;
-}
-
-.alert-box.show {
-    opacity: 1;
-    pointer-events: all;
-    top: 50%;
-}
-
-.alert-img {
-    display: block;
-    height: 60px;
-    margin: 10px auto 20px;
-}
-
-.alert-msg {
-    color: #e24c4b;
-    font-size: 20px;
-    text-transform: capitalize;
-    text-align: center;
-    line-height: 30px;
-    font-weight: 500;
 }

@@ -1,4 +1,5 @@
 const searchKey = decodeURI(location.pathname.split('/').pop());
+
 const searchSpanElement = document.querySelector('#search-key');
 
 searchSpanElement.innerHTML = searchKey;
@@ -19,36 +20,27 @@ let result = [];
 let tempResult = "";
 
 function getSearchResult(data) {
+
     if(keyWords.length) {
         const id = data.id;
         let tags = data.tags.toString() + data.name.toString() + data.shortDes.toString();
 
-        console.log("I am here *************************************")
-
         tags = cleanTags(tags);
 
         keyWords.forEach((keyWord) => {
-            console.log("keyWord = ", keyWord);
-            if(keyWord.length > 3) {
+            if(keyWord.length > 2) {
                 tags.forEach((tag) => {
-                    console.log("tag = ", tag);
                     if (tag.includes(keyWord)) {
-                        console.log("Yes!");
-                        console.log("tempResult = ", tempResult);
                         if (!tempResult.includes(id)) {
-                            console.log("Not included!");
                             tempResult += id + " ";
-                            console.log("tempResult = ", tempResult);
-
                             result.push(data);
-                            console.log("searchResult", result);
                         }
                     }
                 })
             }
         })
+
         return result;
     }
 }
 createInDemandProductSlider();
-

@@ -4,7 +4,7 @@
 .hero-section{
     width: 100%;
     height: calc(100vh - 120px);
-    background-image: url('../img/header.png');
+    background-image: url('../img/header.jpg');
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -26,12 +26,16 @@
     font-weight: 300;
 }
 
-/* product */
 .product {
     position: relative;
     overflow: hidden;
     padding: 20px 0;
 }
+
+.section-heading {
+    padding: 0 0 10px 180px;
+}
+
 
 .product-category{
     padding: 0 10vw;
@@ -138,12 +142,13 @@
     /*outline: none;*/
     /*border-radius: 5px;*/
     /*transition: 0.7s;*/
-    /*background: url("../img/AJShop/bkg-gold1.png");*/
+    /*background: url("../img/addProduct/bkg-gold1.png");*/
 }
 
 .card-btn:hover{
     background: #efefef;
 }
+
 
 .product-info{
     width: 100%;

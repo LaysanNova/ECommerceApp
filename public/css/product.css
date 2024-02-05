@@ -69,7 +69,7 @@
 }
 
 .product-discount{
-    color: #ff7d7d;
+    color: #6e6e6e;
     font-size: 20px;
 }
 
@@ -135,14 +135,6 @@
     line-height: 25px;
 }
 
-/* */
-
 @media screen and (max-width: 1119px){
 
-    /*.product-details{*/
-    /*    !*width: 100%;*!*/
-    /*    !*padding: 60px 10vw;*!*/
-    /*    display: grid;*/
-    /*    !*justify-content: space-between;*!*/
-    /*}*/
 }

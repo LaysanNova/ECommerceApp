@@ -2,21 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Men</title>
+    <title>Clothing | For Him</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="css/home.css">
-<!-- ***************************   -->
-  <link rel="stylesheet" href="css/404.css">
+    <link rel="stylesheet" href="css/men.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/home.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="img/favicon_io/site.web-manifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@500&display=swap" rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
 
 </head>
-<body>
-    <nav class="navbar"></nav>
-    <img src="img/card8.png" class="four-0-four-image" alt="">
-    <p class="four-0-four-msg">Collection for men</p>
+<body onload=loadData()>
+<nav class="navbar"></nav>
 
-    <footer></footer>
+<section class="product men-results" id="menResults">
+    <h2 class="heading">Collection for him</h2>
+    <section class="card-container"></section>
+</section>
 
-    <script src="js/nav.js"></script>
-    <script src="js/footer.js"></script>
+<section class="product product-you-may-also-liked"></section>
+<section class="product product-shoes"></section>
+<section class="product product-accessories"></section>
+
+<footer></footer>
+<script src="../js/realDBConnect.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/home.js"></script>
+<script src="../js/footer.js"></script>
+
 </body>
 </html>
+
+!--<!DOCTYPE html>-->

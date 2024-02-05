@@ -8,16 +8,6 @@ const firebaseConfig = {
     appId: "1:913353026515:web:efff79e2e152619c499d26"
 };
 
-// const firebaseConfig = {
-//     apiKey: "AIzaSyCB-JoobxE4Jkyq-HWgfkZFWszZhjTFfXs",
-//     authDomain: "ajshop-be1e0.firebaseapp.com",
-//     databaseURL: "https://ajshop-be1e0-default-rtdb.firebaseio.com",
-//     projectId: "ajshop-be1e0",
-//     storageBucket: "ajshop-be1e0.appspot.com",
-//     messagingSenderId: "136800496353",
-//     appId: "1:136800496353:web:b8972f32172498b3bbe5a0"
-// };
-
 firebase.initializeApp(firebaseConfig);
 const realDBSearch = firebase.database();
 const products = realDBSearch.ref("products");
@@ -34,14 +24,17 @@ function cleanTags(tags) {
     return arrTags;
 }
 
-let inDemandResult = [];
+let youMayAlsoLikeResult = [];
 let womenResult = [];
 let menResult = [];
 let shoesResult = [];
 let accessoriesResult = [];
+let womenSection = document.getElementById('womenResults');
+let menSection = document.getElementById('menResults');
+let shoesSection = document.getElementById('shoesResults');
+let accessoriesSection = document.getElementById('accessoriesResults');
 
 function loadData() {
-    console.log("!!!!!!!!!!!!!!!!!!!");
     products.on("value", function (snapshot) {
         if (!snapshot.exists()) {
             console.log("No products found");
@@ -58,6 +51,19 @@ function loadData() {
                 getCategoryProducts(data, '5');
             })
         }
+        if(womenSection) {
+            createResultCards(womenResult)
+        } else if(menSection) {
+            createResultCards(menResult)
+        } else if(shoesSection) {
+            createResultCards(shoesResult)
+        } else if(accessoriesSection) {
+            createResultCards(accessoriesResult)
+        }
+
+        createProductSlider('Accessories', 'product-accessories', accessoriesResult);
+        createProductSlider('Shoes', 'product-shoes', shoesResult);
+        createProductSlider('You may like', 'product-you-may-also-like', youMayAlsoLikeResult);
     });
 }
 
@@ -66,7 +72,7 @@ function getCategoryProducts(data, category) {
 
     if (itemCategories.includes(category)) {
         switch (category) {
-            case '1' : return inDemandResult.push(data);
+            case '1' : return youMayAlsoLikeResult.push(data);
             case '2' : return womenResult.push(data);
             case '3' : return menResult.push(data);
             case '4' : return shoesResult.push(data);
@@ -80,20 +86,20 @@ const createProductCard = (result) => {
          <div class="product-card" onclick="location.href='/product/${result.id}'">
              <div class="product-image">
                  <img src="${result.images[0]}" class="product-thumb" alt="">
-<!--                 <img src = "../img/AJShop/bag-icon.png" class = "bag-quick" alt = "" >-->
              </div>
              <div class="product-info">
+                <!-- <p class="product-name">${result.id}</p> -->
                  <p class="product-name">${result.name}</p>
-                 <p class="product-name">${result.id}</p>
                  <span class="actual-price">$${result.actualPrice}</span>
                  <span class="price">$${result.sellPrice}</span>
+ <!--                <span class="price">$${result.id}</span>    >-->
              </div>
          </div>
     `;
 }
 
 const createSearchResultCards = (searchResult, parent) => {
-    let start = '<div class="product-container">';
+    let start = '<div class="product-search-container">';
     let middle = '';
     let end = '</div>';
 
@@ -110,10 +116,27 @@ const createSearchResultCards = (searchResult, parent) => {
     }
 }
 
-const createInDemandProductSlider = () => {
-    console.log("!!!!!!!!!!********************!!!!!!!!!!!!!!!!!")
+const createResultCards = (result) => {
+    let start = '<div class="category-container">';
+    let middle = '';
+    let end = '</div>';
+
+    for(let i = 0; i < result.length; i++){
+        if(result[i]){
+            middle += createProductCard(result[i]);
+        }
+    }
+    if(parent){
+        let cardContainer = document.querySelector('.card-container');
+        cardContainer.innerHTML = start + middle + end;
+    } else{
+        return start + middle + end;
+    }
+}
+const createProductSlider = (categoryTitle, categoryParent, categoryResult) => {
+
     const start = `
-        <h2 class="heading">In-Demand</h2>
+        <h2 class="section-heading">${categoryTitle}</h2>
         <button class="pre-btn"><img src="../img/arrow.png" alt=""></button>
         <button class="nxt-btn"><img src="../img/arrow.png" alt=""></button>
         <div class="product-container">
@@ -121,16 +144,16 @@ const createInDemandProductSlider = () => {
     let middle = '';
     const end = '</div>';
 
-    console.log("l = ", inDemandResult.length);
+    console.log("l = ", categoryResult.length);
 
-    for(let i = 0; i < inDemandResult.length; i++){
-        // console.log("inDemandResult[i] = ", inDemandResult[i]);
-        // console.log("inDemandResult[i].id = ", inDemandResult[i].id);
-        middle += createProductCard(inDemandResult[i]);
+    for(let i = 0; i < categoryResult.length; i++){
+        console.log("categoryResult[i] = ", categoryResult[i]);
+        console.log("categoryResult[i].id = ", categoryResult[i].id);
+        middle += createProductCard(categoryResult[i]);
     }
-    // console.log(middle);
+    console.log(middle);
 
-    let slideContainer = document.querySelector('.product.product-indemand');
+    let slideContainer = document.querySelector(`.product.${categoryParent}`);
     if(slideContainer){
         slideContainer.innerHTML = start + middle + end;
         console.log("slideContainer  class = ", slideContainer.getAttribute("class"));
@@ -138,51 +161,25 @@ const createInDemandProductSlider = () => {
     } else{
         return start + middle + end;
     }
-    // setupSlidingEffect();
+     setupSlidingEffect();
 }
 
-// const createProductSlider = (results, parent, title) => {
-//     const start = `
-//         <h2 class="section-heading">${title}</h2>
-//         <button class="pre-btn"><img src="img/arrow.png" alt=""></button>
-//         <button class="nxt-btn"><img src="img/arrow.png" alt=""></button>
-//         <div class="product-container">
-//     `;
-//     let middle = '';
-//     const end = '</div>';
-//
-//     console.log("l = ", results.length);
-//
-//     for(let i = 0; i < results.length; i++){
-//         console.log("results[i] = ", result);
-//         console.log("results[i].id = ", result.id);
-//     }
-//
-//     if(parent){
-//         let slideContainer = document.querySelector(`.product${parent}`);
-//         slideContainer.innerHTML = start + middle + end;
-//         console.log("slideContainer  class = ", slideContainer.getAttribute("class"));
-//         console.log("code = ", slideContainer.innerHTML);
-//         // let cardContainer = document.querySelector(parent);
-//         // cardContainer.innerHTML = start + middle + end;
-//     } else{
-//         return start + middle + end;
-//     }
-//
-//     const productContainers = [...document.querySelectorAll('.product-container')];
-//     const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
-//     const preBtn = [...document.querySelectorAll('.pre-btn')];
-//
-//     productContainers.forEach((item, i) => {
-//         let containerDimensions = item.getBoundingClientRect()
-//         let containerWidth = containerDimensions.width;
-//
-//         nxtBtn[i].addEventListener('click', () => {
-//             item.scrollLeft += containerWidth;
-//         })
-//
-//         preBtn[i].addEventListener('click', () => {
-//             item.scrollLeft -= containerWidth;
-//         })
-//     })
-// }
+const setupSlidingEffect = () => {
+
+    const productContainers = [...document.querySelectorAll('.product-container')];
+    const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
+    const preBtn = [...document.querySelectorAll('.pre-btn')];
+
+    productContainers.forEach((item,i) => {
+        let containerDimensions = item.getBoundingClientRect();
+        let containerWidth = containerDimensions.width;
+
+        nxtBtn[i].addEventListener('click', () => {
+            item.scrollLeft += containerWidth;
+        })
+
+        preBtn[i].addEventListener('click', () => {
+            item.scrollLeft -= containerWidth;
+        })
+    })
+};

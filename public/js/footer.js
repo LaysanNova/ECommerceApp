@@ -1,60 +1,52 @@
 const createFooter = () => {
     let footer = document.querySelector('footer');
-    footer.innerHTML = `
-        <div class="footer-content" id="footer-about">
-            <img src="../img/light-logo.png" class="logo" alt="">
-            <div class="footer-ul-container">                
-                <ul class="category">
-                    <p class="category-title">men</p>
-                    <li><a href="/men" class="footer-link">t-shirts</a></li>
-                    <li><a href="/men" class="footer-link">sweatshirts</a></li>
-                    <li><a href="/men" class="footer-link">shirts</a></li>
-                    <li><a href="/men" class="footer-link">jeans</a></li>
-                    <li><a href="/men" class="footer-link">trousers</a></li>
-                    <li><a href="/shoes" class="footer-link">shoes</a></li>
-                    <li><a href="/men" class="footer-link">casuals</a></li>
-                    <li><a href="/men" class="footer-link">formals</a></li>
-                    <li><a href="/accessories" class="footer-link">watch</a></li>
-                </ul>
-                <ul class="category">
-                    <p class="category-title">women</p>
-                    <li><a href="/women" class="footer-link">t-shirts</a></li>
-                    <li><a href="/women" class="footer-link">sweatshirts</a></li>
-                    <li><a href="/women" class="footer-link">shirts</a></li>
-                    <li><a href="/women" class="footer-link">jeans</a></li>
-                    <li><a href="/women" class="footer-link">trousers</a></li>
-                    <li><a href="/shoes" class="footer-link">shoes</a></li>
-                    <li><a href="/women" class="footer-link">casuals</a></li>
-                    <li><a href="/women" class="footer-link">formals</a></li>
-                    <li><a href="/accessories" class="footer-link">watch</a></li>
 
-                </ul>
+    footer.innerHTML = `
+    <div class="footer-content">
+        <div class="footer-about" id="footer">
+            <div class = "logo-slogan">
+                <img src="../img/light-logo.png" class="logo" alt="">
+                <p class="slogan">Where Education Meets Innovation</p>
+            </div>
+            <div class="footer-about-container">
+                <div class="about">
+                    <p class="footer-title">About ME</p>
+                    <p class="info">Hello there! I'm Laysan, a dedicated Quality Assurance Automation Engineer with a passion for ensuring the reliability,
+                    </p>
+                    <p class="info"> performance, and scalability of software applications. With a keen eye for detail and a commitment to quality,
+                    </p>
+                    <p class="info"> I specialize in designing and implementing automated testing solutions to streamline the testing process.
+                    </p>
+                    <p class="info">This portfolio showcases the project and initiative that reflect
+                        my commitment to interactive technologies and user-friendly experiences.
+                    </p>
+                </div>
             </div>
         </div>
-        <p class="footer-title">About company</p>
-        <p class="info">Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque
-            laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae
-            vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit,
-            sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est,
-            qui dolorem ipsum, quia dolor sit amet consectetur adipisci[ng] velit, sed quia non numquam [do] eius modi
-            tempora inci[di]dunt, ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis
-            nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis
-            autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel
-            illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?</p>
-        <p class="info">Support emails - help@clothing.com, customersupport@clothing.com</p>
-        <p class="info">telephone - 180 00 00 001, 180 00 00 002</p>
-        <div class="footer-social-container">
-            <div>
-                <a href="#" class="social-link">terms & service</a>
-                <a href="#" class="social-link">privacy page</a>
-            </div>
-            <div>
-                <a href="#" class="social-link">instagram</a>
-                <a href="#" class="social-link">facebook</a>
-                <a href="#" class="social-link">twitter</a>
-            </div>
+        <div class="footer-info-container">
+            <ul class="contact-info">
+                <li class="contact-info-title">Contact me:</li>
+                <li><a href="#" class="contact-info-link">https://www.linkedin.com/in/laysan-martin/</a></li>
+                <li><a href="#" class="contact-info-link">laysan.martin.job.com</a></li>
+                <li><a href="#" class="contact-info-link">970-000-0000</a></li>
+            </ul>  
+            <ul class="contact-info">
+                <li class="contact-info-title">Skills:</li>
+                <li><a href="#" class="contact-info-link">Programming Languages: Java, Python, JavaScript, HTML, CSS, JSON</a></li>
+                <li><a href="#" class="contact-info-link">Automation Frameworks: Playwright, Selenium WebDriver, Maven, TestNG, JUnit, Node.js, Cucumber, Cypress</a></li>
+                <li><a href="#" class="contact-info-link">API Testing: Swagger, Selenium DevTools, Postman, Playwright, Charles Proxy</a></li>
+            </ul>
+            <ul class="contact-info">
+                <li class="contact-info-title">Skills:</li>
+                <li><a href="#" class="contact-info-link">Backend Testing: SQL, JDBC</a></li>
+                <li><a href="#" class="contact-info-link">CI/CD: GitHub Actions, Jenkins</a></li>
+                <li><a href="#" class="contact-info-link">Test Management: Jira, TestRail, Zephyr, Trello, QTest, QAlity Plus, Confluence</a></li> 
+            </ul>            
         </div>
-        <p class="footer-credit">Clothing, Best apparels online store</p>    
+    </div>
+    <div class="footer-bottom">
+        <br>
+    </div>
     `;
 }
 

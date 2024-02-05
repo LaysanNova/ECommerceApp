@@ -41,7 +41,6 @@
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border: 1px solid #d1d1d1;
-    text-transform: capitalize;
     background: none;
     color: #a9a9a9;
     outline: none;
@@ -51,11 +50,10 @@
     width: 20%;
     height: 40px;
     padding: 10px 20px;
-    border: none;
+    border: 1px solid #d1d1d1;
     outline: none;
     cursor: pointer;
-    background: #BEC6B7;
-    color:#fff;
+    color:#afa1a1;
     text-transform: capitalize;
     font-size: 15px;
     border-top-right-radius: 10px;

@@ -8,34 +8,16 @@ products.on("value", function (snapshot) {
         snapshot.forEach(function (element) {
             let data = element.val();
             data.id = element.key.toString().replace("-", "").trim();
-            console.log(data.id);
 
             searchResult = getSearchResult(data);
+            console.log(searchResult)
 
-            console.log(searchResult);
-            //inDemandResult1 = getCategoryProducts(data, '1');
+            inDemandResult1 = getCategoryProducts(data, '1');
 
             createSearchResultCards(searchResult, '.card-container');
 
         })
 
-        createInDemandProductSlider();
+        createProductSlider('You may also like', 'product-you-may-also-like', youMayAlsoLikeResult);
     }
 })
-
-// products.on("value", function (snapshot) {
-//     if (!snapshot.exists()) {
-//         console.log("No products found");
-//     } else {
-//         snapshot.forEach(function (element) {
-//             let data = element.val();
-//             data.id = element.key.toString().replace("-", "").trim();
-//             console.log(data);
-//
-//             getSearchResult(data);
-//             console.log("searchResult = ", searchResult);
-//
-//             createProductCards(searchResult, '.card-container');
-//         })
-//     }
-// })

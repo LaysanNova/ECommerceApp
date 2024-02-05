@@ -2,15 +2,8 @@ const express = require('express');
 const admin = require('firebase-admin');
 const bcrypt = require('bcrypt');
 const path = require('path');
-// const { upload, uploadMultiple } = require('./middleware/multer');
-// const { getStorage, ref, uploadBytesResumable } = require('firebase/storage');
-
-// require('dotenv').config();
 
 let serviceAccount = require("./public/credentials/laysanecommerceapp-firebase-adminsdk-89w6t-4d7f7c1e30.json");
-
-// const {initializeApp} = require("firebase/app");
-// const {firebaseConfig} = require("./config/firebaseConfig");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
@@ -25,8 +18,6 @@ const app = express();
 app.use(express.static(staticPath));
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
-
-
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(staticPath, "index.html"));
@@ -128,24 +119,8 @@ app.post("/add-product", (req, res) => {
 
         return res.json({'alert': 'Submitted Successfully.'});
     }
-
-    //  Этот код перенесли выше
-    // let docName = `${name.toLowerCase()} - ${Math.floor(Math.random() * 5000)}`;
-    // db
-    //     .collection('products')
-    //     .doc(docName)
-    //     .set(req.body)
-    //     .then(data => {
-    //         res.json({'product': name});
-    //     })
-    //     .catch(err => {
-    //         return res.json({'alert': 'Some error occurred.Try again.'});
-    //     })
-
 })
-// app.get("/search", (req, res) => {
-//     res.sendFile(path.join(staticPath, "search.html"));
-// })
+
 app.get('/search/:key', (req, res) => {
     res.sendFile(path.join(staticPath, 'search.html'));
 })
