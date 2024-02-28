@@ -14,7 +14,7 @@ let db = admin.firestore();
 
 let staticPath = path.join(__dirname, "public");
 
-const app = express();
+const app= express();
 app.use(express.static(staticPath));
 app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
@@ -68,6 +68,9 @@ app.post("/signup", (req, res) => {
         })
 })
 app.get("/product", (req, res) => {
+    res.sendFile(path.join(staticPath, "product.html"));
+})
+app.get('/product/:id',  (req, res) => {
     res.sendFile(path.join(staticPath, "product.html"));
 })
 app.get("/cart", (req, res) => {

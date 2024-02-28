@@ -41,7 +41,7 @@ function loadData() {
         } else {
             snapshot.forEach(function (element) {
                 let data = element.val();
-                data.id = element.key.toString().replace("-", "").trim();
+                data.id = element.key.toString().replace("+ ", "").trim();
                 console.log(data.id);
 
                 getCategoryProducts(data, '1');
@@ -79,6 +79,43 @@ function getCategoryProducts(data, category) {
             case '5' : return accessoriesResult.push(data);
         }
     }
+}
+
+function getProductById(data, id) {
+    // data.forEach((item) => {
+        let itemId = data.id.toString().replaceAll("+ ", "");
+        if (itemId === id) {
+            //setting up texts
+            const name =  document.querySelector('.product-brand');
+            const shortDes = document.querySelector('.product-short-des');
+            const des = document.querySelector('.des');
+
+            name.innerHTML = data.name
+            shortDes.innerHTML = data.shortDes;
+            des.innerHTML = data.des;
+
+            // pricing
+            const sellPrice = document.querySelector('.product-price');
+            const actualPrice = document.querySelector('.product-actual-price');
+            const discount = document.querySelector('.product-discount');
+
+            let $$;
+            sellPrice.innerHTML = `$${data.sellPrice}`;
+            actualPrice.innerHTML = `$${data.actualPrice}`;
+            discount.innerHTML = `( ${data.discount}% off )`;
+
+            // wishlist and cart btn
+            const wishlistBtn = document.querySelector('.wishlist-btn');
+            // wishlistBtn.addEventListener('click', () => {
+            //     wishlistBtn.innerHTML = add_product_to_cart_or_wishlist('wishlist', data);
+            // })
+
+            const cartBtn = document.querySelector('.cart-btn');
+            // cartBtn.addEventListener('click', () => {
+            //     cartBtn.innerHTML = add_product_to_cart_or_wishlist('cart', data);
+            // })
+        }
+    // })
 }
 
 const createProductCard = (result) => {
