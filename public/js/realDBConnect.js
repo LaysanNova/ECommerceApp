@@ -102,7 +102,9 @@ function getProductById(data, id) {
             let $$;
             sellPrice.innerHTML = `$${data.sellPrice}`;
             actualPrice.innerHTML = `$${data.actualPrice}`;
-            discount.innerHTML = `( ${data.discount}% off )`;
+            discount.innerHTML = `( ${Math.round(Number(data.discount))}% off )`;
+
+            setData(data);
 
             // wishlist and cart btn
             const wishlistBtn = document.querySelector('.wishlist-btn');
