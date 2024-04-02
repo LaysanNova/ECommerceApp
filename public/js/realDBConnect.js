@@ -1,18 +1,28 @@
+// const firebaseConfig = {
+//     apiKey: "AIzaSyBwTJ6FBvOVX4K-X9JRV--XZ4Hf7CB5sTQ",
+//     authDomain: "appl-655b1.firebaseapp.com",
+//     databaseURL: "https://appl-655b1-default-rtdb.firebaseio.com",
+//     projectId: "appl-655b1",
+//     storageBucket: "appl-655b1.appspot.com",
+//     messagingSenderId: "913353026515",
+//     appId: "1:913353026515:web:efff79e2e152619c499d26"
+// };
+
 const firebaseConfig = {
-    apiKey: "AIzaSyBwTJ6FBvOVX4K-X9JRV--XZ4Hf7CB5sTQ",
-    authDomain: "appl-655b1.firebaseapp.com",
-    databaseURL: "https://appl-655b1-default-rtdb.firebaseio.com",
-    projectId: "appl-655b1",
-    storageBucket: "appl-655b1.appspot.com",
-    messagingSenderId: "913353026515",
-    appId: "1:913353026515:web:efff79e2e152619c499d26"
+    apiKey: "AIzaSyBOT8anAw6_uCx1ry-If7K_z_y842nOiUw",
+    authDomain: "ecommerce2-aa05a.firebaseapp.com",
+    databaseURL: "https://ecommerce2-aa05a-default-rtdb.firebaseio.com",
+    projectId: "ecommerce2-aa05a",
+    storageBucket: "ecommerce2-aa05a.appspot.com",
+    messagingSenderId: "280685697688",
+    appId: "1:280685697688:web:e5ff639a40da279f7c8eed"
 };
 
 firebase.initializeApp(firebaseConfig);
 const realDBSearch = firebase.database();
 const products = realDBSearch.ref("products");
+const orders = realDBSearch.ref("orders");
 
-//console.log(firebase);
 function cleanTags(tags) {
     tags = tags.trim().toLowerCase();
     const arrTags = tags.split(" ");
@@ -42,7 +52,6 @@ function loadData() {
             snapshot.forEach(function (element) {
                 let data = element.val();
                 data.id = element.key.toString().replace("+ ", "").trim();
-                console.log(data.id);
 
                 getCategoryProducts(data, '1');
                 getCategoryProducts(data, '2');
@@ -120,6 +129,45 @@ function getProductById(data, id) {
     // })
 }
 
+function getOrderById(data, id) {
+    // data.forEach((item) => {
+    let orderId = data.id.toString();
+    if (orderId === id) {
+        //setting up texts
+        const name =  document.querySelector('.product-brand');
+        const shortDes = document.querySelector('.product-short-des');
+        const des = document.querySelector('.des');
+
+        name.innerHTML = data.name
+        shortDes.innerHTML = data.shortDes;
+        des.innerHTML = data.des;
+
+        // pricing
+        const sellPrice = document.querySelector('.product-price');
+        const actualPrice = document.querySelector('.product-actual-price');
+        const discount = document.querySelector('.product-discount');
+
+        let $$;
+        sellPrice.innerHTML = `$${data.sellPrice}`;
+        actualPrice.innerHTML = `$${data.actualPrice}`;
+        discount.innerHTML = `( ${Math.round(Number(data.discount))}% off )`;
+
+        setData(data);
+
+        // wishlist and cart btn
+        const wishlistBtn = document.querySelector('.wishlist-btn');
+        // wishlistBtn.addEventListener('click', () => {
+        //     wishlistBtn.innerHTML = add_product_to_cart_or_wishlist('wishlist', data);
+        // })
+
+        const cartBtn = document.querySelector('.cart-btn');
+        // cartBtn.addEventListener('click', () => {
+        //     cartBtn.innerHTML = add_product_to_cart_or_wishlist('cart', data);
+        // })
+    }
+    // })
+}
+
 const createProductCard = (result) => {
     return `
          <div class="product-card" onclick="location.href='/product/${result.id}'">
@@ -183,20 +231,14 @@ const createProductSlider = (categoryTitle, categoryParent, categoryResult) => {
     let middle = '';
     const end = '</div>';
 
-    console.log("l = ", categoryResult.length);
-
     for(let i = 0; i < categoryResult.length; i++){
-        console.log("categoryResult[i] = ", categoryResult[i]);
-        console.log("categoryResult[i].id = ", categoryResult[i].id);
+
         middle += createProductCard(categoryResult[i]);
     }
-    console.log(middle);
 
     let slideContainer = document.querySelector(`.product.${categoryParent}`);
     if(slideContainer){
         slideContainer.innerHTML = start + middle + end;
-        console.log("slideContainer  class = ", slideContainer.getAttribute("class"));
-        console.log("code = ", slideContainer.innerHTML);
     } else{
         return start + middle + end;
     }

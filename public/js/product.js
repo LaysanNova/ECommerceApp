@@ -2,6 +2,7 @@ const productImages = document.querySelectorAll(".product-images img");
 const productImageSlide = document.querySelector(".image-slider");
 
 let activeImageSlide = 0;
+const db = firebase.database();
 
 productImages.forEach((item, i) => {
     item.addEventListener('click',() => {
@@ -91,6 +92,7 @@ const setData = (data) => {
 //         })
 // }
 
+let productId = null;
 products.on("value", function (snapshot) {
     if (!snapshot.exists()) {
         console.log("No products found");
@@ -99,7 +101,6 @@ products.on("value", function (snapshot) {
             let data = element.val();
             data.id = element.key.toString().replace("+ ", "").trim();
 
-            let productId = null;
             if(location.pathname !== '/product'){
                 productId = decodeURI(location.pathname.split('/').pop());
             }
@@ -108,3 +109,85 @@ products.on("value", function (snapshot) {
     }
 })
 
+const validateForm = (checkedSizeId) => {
+    if (productId === 0) {
+        return showAlert('Product id not found.');
+    } else if (checkedSizeId == null || checkedSizeId === "") {
+        return showAlert('Please select a size.');
+    }
+    return true;
+}
+
+const createOrderId = function () {
+    const date = new Date();
+    console.log("OrderId     : ", date.getTime())
+    return date.getTime();
+}
+
+let isOrderExisting;
+const orderId = createOrderId();
+
+orders.on("value", function (snapshot) {
+    if (!snapshot.exists()) {
+        console.log("No orders found");
+        isOrderExisting = false;
+        createNewOrder(orderId, new Date());
+        isOrderExisting = true;
+        console.log("****************** Order created ");
+    } else {
+        snapshot.forEach(function (element) {
+            let data = element.val();
+            if (data.active === true) {
+                isOrderExisting = true;
+                getOrderById(data, data.id);
+            } else {
+                isOrderExisting = false;
+                createNewOrder(orderId, new Date());
+                isOrderExisting = true;
+                console.log("******************!!!!!!!!!! Order created ");
+            }
+        })
+    }
+})
+
+let quantity = 0;
+let checkedSizeId = 0;
+let productsInOrder = [{productId, checkedSizeId, quantity}];
+let totalPrice;
+
+function addProductToOrder(
+    orderId, productsInOrder, totalPrice){
+    db
+        .ref('orders/' + orderId)
+        .set({
+            products: productsInOrder,
+            total: totalPrice.value
+        });
+    showAlert("Product added to cart successfully.");
+}
+
+function createNewOrder(
+    orderId, orderDate){
+    db
+        .ref('orders/' + orderId)
+        .set({
+            id: orderId.value,
+            date: orderDate.value,
+            active: true,
+        });
+    showAlert("Order created successfully.");
+}
+
+const addToCartBtn = document.querySelector("#addToCart");
+addToCartBtn.addEventListener('click', function (e) {
+
+    checkedSizeId = document.querySelector("label[class='size-radio-btn check']").id;
+    quantity = 1;
+    console.log(checkedSizeId, quantity);
+
+    if (validateForm(checkedSizeId)) {
+        loader.style.display = 'block';
+        addProductToOrder(orderId, productsInOrder, totalPrice);
+        location.reload();
+    }
+})
