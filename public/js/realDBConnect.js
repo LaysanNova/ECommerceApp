@@ -96,9 +96,9 @@ function getProductById(data, id) {
         const actualPrice = document.querySelector('.product-actual-price');
         const discount = document.querySelector('.product-discount');
 
-        sellPrice.innerHTML = `$${data.sellPrice}`;
-        actualPrice.innerHTML = `$${data.actualPrice}`;
-        discount.innerHTML = `( ${data.discount}% off )`;
+        sellPrice.innerHTML = `$${Number(data.sellPrice).toFixed(2)}`;
+        actualPrice.innerHTML = `$${Number(data.actualPrice).toFixed(2)}`;
+        discount.innerHTML = `(${Number(data.discount).toFixed(0)}% off)`;
 
         setData(data);
 
@@ -279,8 +279,8 @@ const createProductCard = (result) => {
              <div class="product-info">
                 <!-- <p class="product-name">${result.id}</p> -->
                  <p class="product-name">${result.name}</p>
-                 <span class="actual-price">$${result.actualPrice}</span>
-                 <span class="price">$${result.sellPrice}</span>
+                 <span class="actual-price">$${Number(result.actualPrice).toFixed(2)}</span>
+                 <span class="price">$${Number(result.sellPrice).toFixed(2)}</span>
              </div>
          </div>
     `;

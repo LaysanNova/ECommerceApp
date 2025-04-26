@@ -42,7 +42,7 @@ const createSmallCards = (product) => {
                 <p class="item-count">${product.amount}</p>
                 <button class="counter-btn increment">+</button>
             </div>
-            <p class="sm-price">$${product.sellPrice}</p>
+            <p class="sm-price">$${Number(product.sellPrice).toFixed(2)}</p>
             <button class="sm-delete-btn"><img src="../img/close.png" alt=""></button>
         </div>
     `;
@@ -123,7 +123,7 @@ async function updateTotalBill() {
 
 function updateBill() {
     let billPrice = document.querySelector('.bill');
-    billPrice.innerHTML = `$${totalBill}`;
+    billPrice.innerHTML = `$${Number(totalBill).toFixed(2)}`;
 }
 
 function setupEvents(section) {
