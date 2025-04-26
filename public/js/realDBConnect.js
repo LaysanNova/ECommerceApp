@@ -9,6 +9,7 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+
 const db = firebase.database();
 const realDBSearch = firebase.database();
 const products = realDBSearch.ref("products");
