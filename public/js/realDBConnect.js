@@ -68,8 +68,8 @@ function getCategoryProducts(data, category) {
     if (itemCategories.includes(category)) {
         switch (category) {
             case '1' : return youMayAlsoLikedResult.push(data);
-            case '2' : return menResult.push(data);
-            case '3' : return womenResult.push(data);
+            case '2' : return womenResult.push(data);
+            case '3' : return menResult.push(data);
             case '4' : return shoesResult.push(data);
             case '5' : return accessoriesResult.push(data);
         }
@@ -96,7 +96,7 @@ function getProductById(data, id) {
         const actualPrice = document.querySelector('.product-actual-price');
         const discount = document.querySelector('.product-discount');
 
-        sellPrice.innerHTML = `$${Number(data.sellPrice).toFixed(2)}`;
+        sellPrice.innerHTML = `$${(Number(data.actualPrice) - (Number(data.actualPrice) * Number(data.discount) / 100)).toFixed(2)}`;
         actualPrice.innerHTML = `$${Number(data.actualPrice).toFixed(2)}`;
         discount.innerHTML = `(${Number(data.discount).toFixed(0)}% off)`;
 
@@ -181,8 +181,6 @@ function getProductByIdOnCart() {
                 let end = '</div>';
                 let product;
                 let dataID;
-
-
 
                 for (let i = 1; i < productsInActiveOrder.length; i++) {
                     const allProducts = productsInActiveOrder.split(" ");
