@@ -42,7 +42,8 @@ const createSmallCards = (product) => {
                 <p class="item-count">${product.amount}</p>
                 <button class="counter-btn increment">+</button>
             </div>
-            <p class="sm-price">$${Number(product.sellPrice).toFixed(2)}</p>
+            <p class="sm-price" data-price="${product.sellPrice}">$${(Number(product.sellPrice) * Number(product.amount)).toFixed(2)}</p>
+
             <button class="sm-delete-btn"><img src="../img/close.png" alt=""></button>
         </div>
     `;
@@ -120,7 +121,6 @@ async function updateTotalBill() {
     }
 }
 
-
 function updateBill() {
     let billPrice = document.querySelector('.bill');
     billPrice.innerHTML = `$${Number(totalBill).toFixed(2)}`;
@@ -160,7 +160,7 @@ function setupEvents(section) {
             if (amountProduct < cartProducts[i].stock) {
                 amountProduct++;
                 totalBill += cost;
-                prices[i].textContent = `$${amountProduct * cost}`;
+                prices[i].textContent = `$${Number(amountProduct * cost).toFixed(2)}`;
                 counts[i].textContent = amountProduct;
                 if (section === 'cart') {
                     updateBill();

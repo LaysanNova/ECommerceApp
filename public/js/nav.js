@@ -9,10 +9,9 @@ const createNav = () => {
                 <div class="search" data-search_bar-id="search_bar">
                     <input type="text" class="search-box" placeholder="Search brand, product...">
                     <button class="search-btn" data-search_btn-id="search_btn">Search</button>
-                </div>
-                
+                </div>                
                 <a href="#"><img src="../img/user.png" alt=""></a>
-                <a href="/cart"><img src="../img/cart.png" alt=""></a>
+                <a href="/cart/order"><img src="../img/cart.png" alt=""></a>
                 <a href="/add-product"><img src="../img/add.png" alt=""></a>
             </div>
         </div>
@@ -59,5 +58,3 @@ searchBox.addEventListener('keypress', function(event) {
         location.href = `/search/${searchBox.value.trim().toLowerCase()}`
     }
 })
-
-

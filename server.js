@@ -3,12 +3,14 @@ const admin = require('firebase-admin');
 const bcrypt = require('bcrypt');
 const path = require('path');
 
-let serviceAccount = require("./public/credentials/laysanecommerceapp-firebase-adminsdk-89w6t-4d7f7c1e30.json");
+// let serviceAccount = require("./public/credentials/laysanecommerceapp-firebase-adminsdk-89w6t-4d7f7c1e30.json");
 
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    // firebaseConfig,
-});
+admin.initializeApp(
+//     {
+//     credential: admin.credential.cert(serviceAccount),
+//     // firebaseConfig,
+// }
+);
 
 let db = admin.firestore();
 
