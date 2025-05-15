@@ -1,4 +1,4 @@
-# EcommerceApp
+# ECommerceApp
 
 LaysanEcommerceApp is a backend for a simple e-commerce application, built using Node.js, Express, and Firebase. It includes user authentication and server setup, with potential for expansion.
 
